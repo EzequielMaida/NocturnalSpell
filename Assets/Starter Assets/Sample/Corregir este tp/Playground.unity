@@ -348,7 +348,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97738332651314f4f91418907ffd75da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons: []
+  Fuego: {fileID: 0}
+  Hielo: {fileID: 0}
 --- !u!1 &496648492
 GameObject:
   m_ObjectHideFlags: 0
@@ -1553,8 +1554,8 @@ MonoBehaviour:
   currentMana: 0
   manaRegenRate: 1
   manaRegenDelay: 2
+  manaBarFill: {fileID: 0}
   manaText: {fileID: 0}
-  manaBar: {fileID: 0}
 --- !u!114 &4416926083347132257
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1567,9 +1568,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97738332651314f4f91418907ffd75da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weapons:
-  - {fileID: 6514237394246567338, guid: df92cb886b929d44686a2448d2b3594e, type: 3}
-  - {fileID: 6514237394246567338, guid: e9a9446f7e91f1940b98918f551b2fb3, type: 3}
+  Fuego: {fileID: 6514237394246567338, guid: df92cb886b929d44686a2448d2b3594e, type: 3}
+  Hielo: {fileID: 6514237394246567338, guid: e9a9446f7e91f1940b98918f551b2fb3, type: 3}
 --- !u!1001 &5226203432431967431
 PrefabInstance:
   m_ObjectHideFlags: 0
