@@ -28,12 +28,16 @@ public class TPDisparadorController : MonoBehaviour
 
     private int aimLayerIndex;
 
+     [Header("Mana")]
+    public PlayerMana playerMana;
+    public int manaRequiredForShot = 10;
+
     private void Start()
     {
         aimLayerIndex = animator.GetLayerIndex("Aim");
-        tiempoUltimoDisparo = -tiempoEntreDisparos; // Permite disparar inmediatamente al inicio
+        tiempoUltimoDisparo = -tiempoEntreDisparos;
+        playerMana = GetComponent<PlayerMana>(); // Asumiendo que PlayerMana está en el mismo GameObject
     }
-
     private void Update()
     {
         if (input.aim)
@@ -84,17 +88,18 @@ public class TPDisparadorController : MonoBehaviour
         transform.forward = Vector3.Lerp(transform.forward, aimDirection, Time.deltaTime * 1f);
 
         // Disparo con cooldown
-        if (input.shoot && Time.time >= tiempoUltimoDisparo + tiempoEntreDisparos)
+       if (input.shoot && Time.time >= tiempoUltimoDisparo + tiempoEntreDisparos && playerMana.HasEnoughMana(manaRequiredForShot))
         {
             Disparar(mouseWorldPosition);
             tiempoUltimoDisparo = Time.time;
+            playerMana.UseMana(manaRequiredForShot);
         }
     }
 
     private void Disparar(Vector3 objetivo)
     {
         var balaDirection = (objetivo - balaSpawnPosition.position).normalized;
-
+        
         Instantiate(
             balaPrefab, 
             balaSpawnPosition.position,

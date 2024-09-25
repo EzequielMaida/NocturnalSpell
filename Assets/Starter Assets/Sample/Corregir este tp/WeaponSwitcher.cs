@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponSwitcher : MonoBehaviour
 {
+
     public GameObject Fuego;
     public GameObject Hielo;
     private bool isWeapon1Active = true;

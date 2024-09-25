@@ -29,10 +29,14 @@ public class PlayerMana : MonoBehaviour
             RegenerateMana();
         }
     }
-
-    public void UseMana(int amount)
+ public bool HasEnoughMana(int amount)
     {
-        if (currentMana >= amount)
+        return currentMana >= amount;
+    }
+
+      public void UseMana(int amount)
+    {
+        if (HasEnoughMana(amount))
         {
             currentMana -= amount;
             lastManaUseTime = Time.time;
@@ -44,7 +48,7 @@ public class PlayerMana : MonoBehaviour
             Debug.Log("No hay suficiente maná!");
         }
     }
-
+    
     public void RestoreMana(int amount)
     {
         currentMana = Mathf.Min(currentMana + amount, maxMana);
